@@ -1,0 +1,45 @@
+
+def primsAlgorithm(nodes,adjacency_matrix):
+
+    nodes = nodes #total number of nodes
+    edges = 0  #total number of edges
+    visited_nodes= [0] * nodes #this array will store the nodes that have been visited
+    visited_nodes[0] = True #the visited nodes will be True and the ones that haven't been visited yet will be False
+    total_weight = 0 #the total number of weights for the minimum spanning tree
+
+    while (edges != (nodes - 1)): #the edges of the spanning tree can not be equal to the number of edges of the graph(V-1)
+
+        minimum_weight = float('inf') # let the minimum_weight be infinity
+
+        starting_node, end_node = 0,0 #initializing the  starting node and ending node
+
+        for x in range(0,nodes):
+            if visited_nodes[x]:
+                for y in range(0+1,nodes):
+                    #if y has not been visited and is adjacent to x,
+                    if ((not visited_nodes[y]) and adjacency_matrix[x][y]):
+
+                        if  adjacency_matrix[x][y] < minimum_weight:
+                            minimum_weight = adjacency_matrix[x][y]
+                            starting_node = x
+                            end_node = y
+
+
+
+        print(str(starting_node) + "-" + ">" + str(end_node) + ":" + " " + str(adjacency_matrix[starting_node][end_node]))
+
+        visited_nodes[end_node] = True # the node has now been visited
+        edges += 1
+
+
+
+
+print(primsAlgorithm(7,[[0, 10, 25, 0, 0 ,0, 0], #6
+                       [10, 0, 0 ,28 ,0, 0, 0], #1
+                       [25, 0, 0 ,0 ,24, 0, 22], #5
+                       [0, 0, 0 ,0 ,14, 16, 0 ], #2
+                       [0, 0, 24, 14, 0, 0, 18], #7
+                       [0, 0, 0, 16, 0, 0, 12],  #3
+                       [0, 22, 0, 0, 18, 12, 0]]))
+
+
