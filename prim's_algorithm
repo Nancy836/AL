@@ -27,7 +27,8 @@ def primsAlgorithm(nodes,adjacency_matrix):
 
 
         print(str(starting_node) + "-" + ">" + str(end_node) + ":" + " " + str(adjacency_matrix[starting_node][end_node]))
-
+        total_weight += adjacency_matrix[starting_node][end_node] #add the weight to the total number of weights of the minimum spanning tree
+        print(total_weight)
         visited_nodes[end_node] = True # the node has now been visited
         edges += 1
 
